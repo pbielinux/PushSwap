@@ -3,19 +3,32 @@
 
 # include "./libft/include/libft.h"
 
-typedef struct s_stack
+typedef enum e_stack_name
 {
-	t_list	*first;
-	int		count;
-	int		min;
-	int		max[3];
-}	t_stack;
+	stack_a,
+	stack_b
+}	t_s_name;
+
+typedef enum e_operation
+{
+	op_sa,
+	op_sb,
+	op_ss,
+	op_pa,
+	op_pb,
+	op_ra,
+	op_rb,
+	op_rr,
+	op_rra,
+	op_rrb,
+	op_rrr
+}	t_opt;
 
 typedef struct s_data
 {
-	t_stack *stack_a;
-	t_stack *stack_b;
-	char	**argv;
+	t_vec	stack_a;
+	t_vec	stack_b;
+	int		nb_items;
 }	t_data;
 
 #endif // !TYPES_H
