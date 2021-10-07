@@ -28,7 +28,6 @@ typedef struct s_data
 {
 	t_vec	stack_a;
 	t_vec	stack_b;
-	int		nb_items;
 }	t_data;
 
 #endif // !TYPES_H
