@@ -2,16 +2,20 @@
 
 void	ft_push(t_data *data, t_s_name stack_name)
 {
-	int	*popped;
+	int	popped;
 
 	if (stack_name == stack_a)
 	{
-		popped = vec_pop(&data->stack_b);
-		vec_push(&data->stack_a, popped);
+		vec_get(&data->stack_b, 0, &popped);
+		vec_shift(&data->stack_b);
+		vec_unshift(&data->stack_a, &popped);
+		ft_print_ops(op_pa);
 	}
 	else
 	{
-		popped = vec_pop(&data->stack_a);
-		vec_push(&data->stack_b, popped);
+		vec_get(&data->stack_a, 0, &popped);
+		vec_shift(&data->stack_a);
+		vec_unshift(&data->stack_b, &popped);
+		ft_print_ops(op_pb);
 	}
 }
