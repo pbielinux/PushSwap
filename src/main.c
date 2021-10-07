@@ -13,12 +13,15 @@ int main(int argc, char **argv)
 	data = ft_init_data((argc - 1), (argv + 1));
 	ft_check_stack(&data.stack_a);
 
-/* 	int	tmp;
+	ft_rotate(&data, stack_a);
+
+	int	tmp;
 	for (size_t i = 0; i < data.stack_a.length; i++)
 	{
 		vec_get(&data.stack_a, i, &tmp);
-		printf("%d\n", tmp);
-	} */
+		printf("Vec[%zu]	=	%d\n", i, tmp);
+	}
+	printf("\n");
 }
 
 static t_data ft_init_data(int nb_items, char **nb_value)
