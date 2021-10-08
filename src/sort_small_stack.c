@@ -73,10 +73,9 @@ void	ft_sort_hundred(t_data *data)
 
 	data->chunks = 0;
 	size = data->stack_a.length;
-
 	while (data->stack_a.length > 3)
 	{
-		med = ft_median(&data->stack_a, size, &data->chunks);
+		med = ft_median(&data->stack_a, size);
 		while (ft_get_smallest(&data->stack_a) < med)
 		{
 			vec_get(&data->stack_a, 0, &tmp);

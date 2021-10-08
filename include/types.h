@@ -28,7 +28,9 @@ typedef struct s_data
 {
 	t_vec	stack_a;
 	t_vec	stack_b;
-	int		chunks;
+	size_t	nb_count;
+	char	**nb_value;
+	int		**chunks;
 }	t_data;
 
 #endif // !TYPES_H
