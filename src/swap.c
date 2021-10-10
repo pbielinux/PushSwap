@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void ft_swap(t_data *data, t_s_name stack_name)
+void	ft_swap(t_data *data, t_s_name stack_name)
 {
 	if (stack_name == stack_a)
 	{

@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
 static void	ft_print_usage(void);
-void	ft_fill_stack(t_vec *stack, int nb_items, char **nb_value);
+void		ft_fill_stack(t_vec *stack, int nb_items, char **nb_value);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 
@@ -27,14 +27,12 @@ int main(int argc, char **argv)
 		ft_sort_hundred(&data);
 	else
 		ft_sort_large(&data);
-	free(data.nb_value);
-	vec_drop(&data.stack_a);
-	vec_drop(&data.stack_b);
+	ft_free_data(&data);
 }
 
 void	ft_fill_stack(t_vec *stack, int nb_items, char **nb_value)
 {
-	int i;
+	int	i;
 	int	tmp;
 
 	i = 0;

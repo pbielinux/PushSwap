@@ -31,10 +31,10 @@ bool	ft_is_sorted(t_vec *stack)
 	return (true);
 }
 
-static bool ft_check_dups(t_vec *stack)
+static bool	ft_check_dups(t_vec *stack)
 {
-	int	nb_current;
-	int	nb_cmp;
+	int		nb_current;
+	int		nb_cmp;
 	size_t	i;
 	size_t	j;
 

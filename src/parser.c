@@ -13,7 +13,7 @@ void	ft_parse_args(int nb_elems, char **to_sort)
 	}
 }
 
-bool ft_isnumber(char *nb)
+bool	ft_isnumber(char *nb)
 {
 	if (*nb == '-')
 		nb++;
@@ -28,7 +28,7 @@ bool ft_isnumber(char *nb)
 	return (true);
 }
 
-bool ft_isint(char *nb)
+bool	ft_isint(char *nb)
 {
 	char	*nb_char;
 

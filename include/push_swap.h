@@ -18,10 +18,10 @@ void	ft_sort_three(t_data *data);
 void	ft_short_sort(t_data *data);
 void	ft_sort_hundred(t_data *data);
 void	ft_sort_large(t_data *data);
-void 	ft_sort(t_data *data);
+void	ft_sort(t_data *data);
 
-bool 	ft_isint(char *nb);
-bool 	ft_isnumber(char *nb);
+bool	ft_isint(char *nb);
+bool	ft_isnumber(char *nb);
 
 int		ft_median(t_vec *stack, size_t size);
 int		ft_get_smallest(t_vec *stack);
@@ -29,5 +29,6 @@ int		ft_get_big(t_vec *stack);
 size_t	ft_get_position(t_vec *stack, int nb);
 void	ft_print_stacks(t_data *data);
 void	ft_exit_error(char *msg);
+void	ft_free_data(t_data *data);
 
 #endif // !PUSH_SWAP_H

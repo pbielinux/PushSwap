@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	ft_pre_sort(int	stack[], int stack_length)
+void	ft_pre_sort(int stack[], int stack_length)
 {
 	int	i;
 	int	tmp;
@@ -13,7 +13,7 @@ void	ft_pre_sort(int	stack[], int stack_length)
 			tmp = stack[i];
 			stack[i] = stack[i + 1];
 			stack[i + 1] = tmp;
-			i = - 1;
+			i = -1;
 		}
 		i++;
 	}
@@ -41,7 +41,7 @@ int	*ft_get_medians(t_data *data, int chunks)
 	i = 1;
 	while (i <= chunks)
 	{
-		medians[i - 1] = stack_cpy[data->nb_count/ chunks * i - 1];
+		medians[i - 1] = stack_cpy[data->nb_count / chunks * i - 1];
 		i++;
 	}
 	free (stack_cpy);
@@ -86,8 +86,8 @@ size_t	ft_get_position(t_vec *stack, int nb)
 
 int	ft_get_smallest(t_vec *stack)
 {
-	int	tmp;
-	int	smallest;
+	int		tmp;
+	int		smallest;
 	size_t	i;
 
 	i = 0;
@@ -104,8 +104,8 @@ int	ft_get_smallest(t_vec *stack)
 
 int	ft_get_big(t_vec *stack)
 {
-	int	tmp;
-	int	biggest;
+	int		tmp;
+	int		biggest;
 	size_t	i;
 
 	vec_get(stack, 0, &biggest);
