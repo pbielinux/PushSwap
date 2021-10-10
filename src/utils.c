@@ -1,53 +1,51 @@
 #include "push_swap.h"
 
-void	ft_pre_sort(int	*tab, int size)
+void	ft_pre_sort(int	stack[], int stack_length)
 {
 	int	i;
 	int	tmp;
 
 	i = 0;
-	while (i < size - 1)
+	while (i < stack_length - 1)
 	{
-		if (tab[i] > tab[i + 1])
+		if (stack[i] > stack[i + 1])
 		{
-			tmp = tab[i];
-			tab[i] = tab[i + 1];
-			tab[i + 1] = tmp;
-			i = -1;
+			tmp = stack[i];
+			stack[i] = stack[i + 1];
+			stack[i + 1] = tmp;
+			i = - 1;
 		}
 		i++;
 	}
 }
 
-void	ft_set_chunks(int *stack)
+int	*ft_get_medians(t_data *data, int chunks)
 {
-	//int	chunk_size;
+	int	*medians;
 	int	*stack_cpy;
-	int	chunky[5][20];
+	int	tmp;
+	int i;
 
-
-	stack_cpy = malloc(sizeof(int) * 100);
-	omm_guard(stack_cpy, __FILE__, __LINE__);
-	memcpy(stack_cpy, stack, sizeof(int) * 100);
-
-
-	ft_pre_sort(stack_cpy, 100);
-	
-	for (int i = 0; i < 5; i++)
+	medians = malloc(sizeof(int) * data->stack_a.length / chunks);
+	omm_guard(medians, __FILE__, __LINE__);
+	stack_cpy = malloc(sizeof(int) * data->stack_a.length);
+	omm_guard(medians, __FILE__, __LINE__);
+	i = 0;
+	while (i < (int)data->stack_a.length)
 	{
-		for (int j = 0; j < 20; j++)
-			chunky[i][j] = stack_cpy[i + j];
+		vec_get(&data->stack_a, i, &tmp);
+		stack_cpy[i] = tmp;
+		i++;
 	}
-
-	for (int i = 0; i < 5; i++)
+	ft_pre_sort(stack_cpy, data->stack_a.length);
+	i = 1;
+	while (i <= chunks)
 	{
-		for (int j = 0; j < 20; j++)
-		{
-			ft_putnbr(chunky[i][j]);
-			write(1, " ", 1);
-		}
-		write(1, "\n", 1);
+		medians[i - 1] = stack_cpy[data->nb_count/ chunks * i - 1];
+		i++;
 	}
+	free (stack_cpy);
+	return (medians);
 }
 
 int	ft_median(t_vec *stack, size_t size)
@@ -64,7 +62,7 @@ int	ft_median(t_vec *stack, size_t size)
 		vec_get(stack, i, &tab[i]);
 		i++;
 	}
-	ft_pre_sort(tab, stack->length);
+	//ft_pre_sort(tab, stack->length);
 	(void)size;
 	med = tab[0];
 	free(tab);

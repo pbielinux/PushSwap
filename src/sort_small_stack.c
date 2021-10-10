@@ -26,7 +26,6 @@ void	ft_sort_three(t_data *data)
 	}
 	else if (top < mid && mid > bot && bot < top)
 		ft_rev_rotate(data, stack_a);
-
 }
 
 void	ft_rotate_till_small(t_data *data)
@@ -67,25 +66,59 @@ void	ft_short_sort(t_data *data)
 
 void	ft_sort_hundred(t_data *data)
 {
-	int	med;
-	int	size;
+	int	*chunk_max;
+	int	smallest;
 	int	tmp;
+	int i;
 
-	data->chunks = 0;
-	size = data->stack_a.length;
-	while (data->stack_a.length > 3)
+	i = 0;
+	chunk_max = ft_get_medians(data, 5);
+	smallest = ft_get_smallest(&data->stack_a);
+	while (i < 5 && data->stack_a.length > 3)
 	{
-		med = ft_median(&data->stack_a, size);
-		while (ft_get_smallest(&data->stack_a) < med)
+		while (smallest < chunk_max[i])
 		{
+			smallest = ft_get_smallest(&data->stack_a);
 			vec_get(&data->stack_a, 0, &tmp);
-			if (tmp < med)
+			if (tmp <= chunk_max[i])
 				ft_push(data, stack_b);
 			else
 				ft_rotate(data, stack_a);
+			if (data->stack_a.length < 1)
+				break;
 		}
+		i++;
 	}
-	ft_sort_three(data);
+	free(chunk_max);
+	ft_sort(data);
+}
+
+void	ft_sort_large(t_data *data)
+{
+	int	*chunk_max;
+	int	smallest;
+	int	tmp;
+	int i;
+
+	i = 0;
+	chunk_max = ft_get_medians(data, 10);
+	smallest = ft_get_smallest(&data->stack_a);
+	while (i < 10 && data->stack_a.length > 3)
+	{
+		while (smallest < chunk_max[i])
+		{
+			smallest = ft_get_smallest(&data->stack_a);
+			vec_get(&data->stack_a, 0, &tmp);
+			if (tmp <= chunk_max[i])
+				ft_push(data, stack_b);
+			else
+				ft_rotate(data, stack_a);
+			if (data->stack_a.length < 1)
+				break;
+		}
+		i++;
+	}
+	free(chunk_max);
 	ft_sort(data);
 }
 

@@ -21,17 +21,13 @@ int main(int argc, char **argv)
 	data.stack_b = vec_value(data.nb_count, sizeof(int));
 	ft_fill_stack(&data.stack_a, data.nb_count, data.nb_value);
 	ft_check_stack(&data.stack_a);
-	ft_set_chunks((int *)data.stack_a.buffer);
-		
-	//ft_print_stacks(&data);
-
 	if (data.nb_count < 8)
 		ft_short_sort(&data);
 	else if (data.nb_count <= 100)
 		ft_sort_hundred(&data);
-
-	ft_print_stacks(&data);
-
+	else
+		ft_sort_large(&data);
+	free(data.nb_value);
 	vec_drop(&data.stack_a);
 	vec_drop(&data.stack_b);
 }

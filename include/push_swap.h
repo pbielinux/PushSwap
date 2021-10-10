@@ -5,7 +5,7 @@
 
 void	ft_parse_args(int nb_elems, char **to_sort);
 void	ft_check_stack(t_vec *stack);
-void	ft_set_chunks(int *stack);
+int		*ft_get_medians(t_data *data, int chunks);
 bool	ft_is_sorted(t_vec *stack);
 
 void	ft_push(t_data *data, t_s_name stack_name);
@@ -17,6 +17,7 @@ void	ft_print_ops(t_opt opt);
 void	ft_sort_three(t_data *data);
 void	ft_short_sort(t_data *data);
 void	ft_sort_hundred(t_data *data);
+void	ft_sort_large(t_data *data);
 void 	ft_sort(t_data *data);
 
 bool 	ft_isint(char *nb);
