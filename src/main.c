@@ -3,6 +3,24 @@
 static void	ft_print_usage(void);
 void		ft_fill_stack(t_vec *stack, int nb_items, char **nb_value);
 
+void	ft_freev(void **ptr, int len, bool free_seg)
+{
+    if (len < 0)
+		while (*ptr)
+		{
+			free(*ptr);
+			*ptr++ = NULL;
+		}
+    else
+		while (len)
+		{
+			free(ptr[len]);
+			ptr[len--] = NULL;
+		}
+    if (free_seg)
+		free(ptr);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -27,6 +45,7 @@ int	main(int argc, char **argv)
 		ft_sort_hundred(&data);
 	else
 		ft_sort_large(&data);
+	ft_freev((void **)data.nb_value, 100, true);
 	ft_free_data(&data);
 }
 
