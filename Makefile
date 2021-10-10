@@ -23,7 +23,7 @@ objects 			 := $(subst .c,.o,$(subst ${src_dir},${obj_dir},${sources}))
 
 # C Compiler Configuration
 CC      			 := gcc # Using gcc compiler (alternative: clang)
-CFLAGS				 := -I${inc_dir} -I${libft_dir}/include  -Wall -Werror -Wextra -std=c11 -O0
+CFLAGS				 := -I${inc_dir} -I${libft_dir}/include -Wall -Werror -Wextra -std=c11 -O3
 # CFLAGS options:
 # -g 			Compile with debug symbols in binary files
 # -Wall 		Warnings: all - display every single warning

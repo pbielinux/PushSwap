@@ -1,25 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbielik <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/10 22:20:37 by pbielik           #+#    #+#             */
+/*   Updated: 2021/10/10 22:20:53 by pbielik          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	ft_print_usage(void);
 void		ft_fill_stack(t_vec *stack, int nb_items, char **nb_value);
-
-void	ft_freev(void **ptr, int len, bool free_seg)
-{
-    if (len < 0)
-		while (*ptr)
-		{
-			free(*ptr);
-			*ptr++ = NULL;
-		}
-    else
-		while (len)
-		{
-			free(ptr[len]);
-			ptr[len--] = NULL;
-		}
-    if (free_seg)
-		free(ptr);
-}
 
 int	main(int argc, char **argv)
 {
@@ -33,6 +27,7 @@ int	main(int argc, char **argv)
 	{
 		data.nb_value = ft_split(argv[1], ' ');
 		data.nb_count = ft_array_length((void **)data.nb_value);
+		data.argc = argc;
 	}
 	ft_parse_args(data.nb_count, data.nb_value);
 	data.stack_a = vec_value(data.nb_count, sizeof(int));
@@ -42,10 +37,9 @@ int	main(int argc, char **argv)
 	if (data.nb_count < 8)
 		ft_short_sort(&data);
 	else if (data.nb_count <= 100)
-		ft_sort_hundred(&data);
+		ft_sort_large(&data, 5);
 	else
-		ft_sort_large(&data);
-	ft_freev((void **)data.nb_value, 100, true);
+		ft_sort_large(&data, 10);
 	ft_free_data(&data);
 }
 

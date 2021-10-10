@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pbielik <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/10 22:19:55 by pbielik           #+#    #+#             */
+/*   Updated: 2021/10/10 22:19:57 by pbielik          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -16,9 +28,7 @@ void	ft_print_ops(t_opt opt);
 
 void	ft_sort_three(t_data *data);
 void	ft_short_sort(t_data *data);
-void	ft_sort_hundred(t_data *data);
-void	ft_sort_large(t_data *data);
-void	ft_sort(t_data *data);
+void	ft_sort_large(t_data *data, int chunks);
 
 bool	ft_isint(char *nb);
 bool	ft_isnumber(char *nb);
