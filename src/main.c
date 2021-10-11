@@ -13,7 +13,8 @@
 #include "push_swap.h"
 
 static void	ft_print_usage(void);
-void		ft_fill_stack(t_vec *stack, int nb_items, char **nb_value);
+static void	ft_fill_stack(t_vec *stack, int nb_items, char **nb_value);
+static void	ft_start_sort(t_data *data);
 
 int	main(int argc, char **argv)
 {
@@ -30,20 +31,27 @@ int	main(int argc, char **argv)
 		data.argc = argc;
 	}
 	ft_parse_args(data.nb_count, data.nb_value);
-	data.stack_a = vec_value(data.nb_count, sizeof(int));
 	data.stack_b = vec_value(data.nb_count, sizeof(int));
+	data.stack_a = vec_value(data.nb_count, sizeof(int));
 	ft_fill_stack(&data.stack_a, data.nb_count, data.nb_value);
 	ft_check_stack(&data.stack_a);
-	if (data.nb_count < 8)
-		ft_short_sort(&data);
-	else if (data.nb_count <= 100)
-		ft_sort_large(&data, 5);
-	else
-		ft_sort_large(&data, 10);
+	ft_start_sort(&data);
 	ft_free_data(&data);
 }
 
-void	ft_fill_stack(t_vec *stack, int nb_items, char **nb_value)
+static void	ft_start_sort(t_data *data)
+{
+	if (data->nb_count <= 5)
+		ft_short_sort(data);
+	else if (data->nb_count < 25)
+		ft_sort_large(data, 1);
+	else if (data->nb_count <= 100)
+		ft_sort_large(data, data->nb_count / 20);
+	else
+		ft_sort_large(data, 10);
+}
+
+static void	ft_fill_stack(t_vec *stack, int nb_items, char **nb_value)
 {
 	int	i;
 	int	tmp;

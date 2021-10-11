@@ -19,6 +19,7 @@ void	ft_parse_args(int nb_elems, char **to_sort);
 void	ft_check_stack(t_vec *stack);
 int		*ft_get_medians(t_data *data, int chunks);
 bool	ft_is_sorted(t_vec *stack);
+bool	ft_is_rev_sorted(t_vec *stack);
 
 void	ft_push(t_data *data, t_s_name stack_name);
 void	ft_swap(t_data *data, t_s_name stack_name);

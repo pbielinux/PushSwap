@@ -46,8 +46,7 @@ int	*ft_get_medians(t_data *data, int chunks)
 	while (i < (int)data->stack_a.length)
 	{
 		vec_get(&data->stack_a, i, &tmp);
-		stack_cpy[i] = tmp;
-		i++;
+		stack_cpy[i++] = tmp;
 	}
 	ft_pre_sort(stack_cpy, data->stack_a.length);
 	i = 1;

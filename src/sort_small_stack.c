@@ -63,7 +63,7 @@ static void	ft_rotate_a_till_small(t_data *data)
 	small = ft_get_smallest(&data->stack_a);
 	moves = ft_get_position(&data->stack_a, small);
 	vec_get(&data->stack_a, 0, &top);
-	if (moves < (data->stack_a.length / 2))
+	if (moves <= (data->stack_a.length / 2))
 	{
 		while (top != small)
 		{

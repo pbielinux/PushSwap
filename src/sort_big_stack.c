@@ -16,21 +16,20 @@ static void	ft_push_b_to_a(t_data *data);
 
 void	ft_sort_large(t_data *data, int chunks)
 {
-	int	*chunk_max;
 	int	smallest;
 	int	tmp;
 	int	i;
 
 	i = 0;
-	chunk_max = ft_get_medians(data, chunks);
+	data->medians = ft_get_medians(data, chunks);
 	smallest = ft_get_smallest(&data->stack_a);
 	while (i < chunks && data->stack_a.length > 3)
 	{
-		while (smallest < chunk_max[i])
+		while (smallest < data->medians[i])
 		{
 			smallest = ft_get_smallest(&data->stack_a);
 			vec_get(&data->stack_a, 0, &tmp);
-			if (tmp <= chunk_max[i])
+			if (tmp <= data->medians[i])
 				ft_push(data, stack_b);
 			else
 				ft_rotate(data, stack_a);
@@ -39,7 +38,7 @@ void	ft_sort_large(t_data *data, int chunks)
 		}
 		i++;
 	}
-	free(chunk_max);
+	free(data->medians);
 	ft_push_b_to_a(data);
 }
 

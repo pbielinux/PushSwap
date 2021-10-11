@@ -19,10 +19,7 @@ void	ft_check_stack(t_vec *stack)
 	if (!ft_check_dups(stack))
 		ft_exit_error("Error: Doubles founded!\n");
 	if (ft_is_sorted(stack))
-	{
-		ft_putstr_fd("The input is already sorted!\n", 1);
 		exit(EXIT_SUCCESS);
-	}
 }
 
 bool	ft_is_sorted(t_vec *stack)
@@ -37,6 +34,24 @@ bool	ft_is_sorted(t_vec *stack)
 		vec_get(stack, i, &nb_current);
 		vec_get(stack, i + 1, &nb_next);
 		if (nb_current > nb_next)
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
+bool	ft_is_rev_sorted(t_vec *stack)
+{
+	int		nb_current;
+	int		nb_next;
+	size_t	i;
+
+	i = 0;
+	while (i < stack->length - 1)
+	{
+		vec_get(stack, i, &nb_current);
+		vec_get(stack, i + 1, &nb_next);
+		if (nb_current < nb_next)
 			return (false);
 		i++;
 	}

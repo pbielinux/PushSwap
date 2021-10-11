@@ -43,6 +43,7 @@ typedef struct s_data
 	size_t	nb_count;
 	char	**nb_value;
 	int		argc;
+	int		*medians;
 }	t_data;
 
 #endif // !TYPES_H
